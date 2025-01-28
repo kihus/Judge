@@ -1,0 +1,67 @@
+using System;
+
+namespace exercicio5
+{
+	class Program
+	{
+		static void Main()
+		{
+
+			int MAX_LINES = 100, MAX_COLUMNS = 100;
+
+			int lines = 0, columns = 0;
+
+			while (true)
+			{
+				string[] vet;
+				Console.WriteLine("Enter as many rows and columns as you want");
+				vet = Console.ReadLine().Split(' ');
+
+				if (vet.Length == 2 &&
+						int.TryParse(vet[0], out lines) &&
+						int.TryParse(vet[1], out columns) &&
+						lines > 0 &&
+						lines <= MAX_LINES &&
+						columns > 0 &&
+						columns <= MAX_COLUMNS)
+				{
+
+					break;
+				}
+
+				Console.WriteLine("Please, fill in input correctly");
+
+
+			}
+
+			int[,] mat = new int[lines, columns];
+
+			for (int i = 0; i < lines; i++)
+			{
+				for (int j = 0; j < columns; j++)
+				{
+					while (true)
+					{
+						Console.WriteLine($"Enter a value in this position [{i}, {j}]");
+						if (int.TryParse(Console.ReadLine(), out mat[i, j])) break;
+						Console.WriteLine("Try again, you probably filled in the wrong data.");
+
+					}
+
+
+				}
+
+			}
+
+			for (int i = 0; i < lines; i++)
+			{
+				for (int j = 0; j < columns; j++)
+				{
+					Console.Write(mat[i, j] + " ");
+				}
+				Console.WriteLine();
+			}
+		}
+	}
+}
+
